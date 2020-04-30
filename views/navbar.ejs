@@ -1,0 +1,36 @@
+<header>
+  <div class='userNav'>
+    <a href = '/'><img src = '../assets/images/minermunchies.png' id = 'logo' alt='miner munchies logo'></a>
+    <ul class='right'>
+      <!-- This if statement will display the login and register links if the user has not logged in yet-->
+      <% if(!(session.user)){ %>
+      <li><a id = 'loginLink' href='./login' <%if(locals.originalUrl=='/login'){%>class = 'active'<%}%>>Sign In</a></li>
+      <li><a id = 'registerLink' href='./register' <%if(locals.originalUrl=='/register'){%>class = 'active'<%}%>>Register</a></li>
+      <!-- This else statement will display the favorites, account and logout links if the user has logged in-->
+      <% } else { %>
+      <li><a id = 'favoritesLink' href='./favorites' <%if(locals.originalUrl=='/favorites'){%>class = 'active'<%}%>>Favorites</a></li>
+      <li>
+        <!-- Profile link shows the user's username and profile picture-->
+        <a id = 'profileLink' href='./account' class = 'capital <%if(locals.originalUrl=="/profile"){%>active'<%}else%>'>
+          <img src = './../assets/images/NormNav.png' id = 'navPic' alt='norm'><%= session.user._username %>
+        </a>
+      </li>
+      <li><form method = 'post' action="/logout">
+        <input type='submit' value='Log Out' id='navLogOut'>
+      </form>
+    </li>
+    <% } %>
+    </ul>
+  </div>
+  <div class = 'left'>
+    <ul>
+      <!-- The if statements within the <a> tags check the current url and set
+      that link to active if it matches, changing the color of the link to
+      show the user's current location-->
+      <li ><a id ="homeLink"  href="/" <%if(locals.originalUrl=='/'){%>class = 'active'<%}%> >Home</a></li>
+      <li ><a id ="restaurantLink"  href="./restaurants" <%if(locals.originalUrl=='/restaurants'){%>class = 'active'<%}%>>Restaurants</a></li>
+      <li ><a id ="vendingLink"  href="./vending" <%if(locals.originalUrl=='/vending'){%>class = 'active'<%}%>>Vending</a></li>
+      <li ><a id ="mapLink"  href="./map" <%if(locals.originalUrl=='/map'){%>class = 'active'<%}%>>Map</a></li>
+    </ul>
+  </div>
+</header>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Review</title>
+    <link href="./../assets/stylesheets/w3.css" rel='stylesheet'  type="text/css"/>
+    <link href="./../assets/stylesheets/bootstrap.min.css" rel='stylesheet'  type="text/css"/>
+    <link href='./../assets/stylesheets/capstone.css' rel='stylesheet'  type='text/css'/>
+</head>
+<body>
+  <%- include ('./navbar'); -%>
+<div class ="reviewHeader">
+<h3>You are reviewing
+
+<%= session.restaurant._name %>
+</h3>
+</div>
+
+<div class="reviewForm">
+<!-- This form allows the user to make a review for a restaurant-->
+<form method='POST' action='/review'>
+  <!-- These hidden inputs will send the resturant name and the reviewer's username-->
+  <input type='hidden' name ='restaurant' value='<%= session.restaurant._name %>'>
+  <input type='hidden' name ='username' value='<%= session.user._username %>'>
+
+    <label for="exp">Tell us about your experience</label><br>
+      <textarea id="exp" name="exp" value = '<%= review.exp %>' required></textarea><br>
+
+    <label for="wait">How long did you wait for your food? (minutes)</label><br>
+      <input type="number" min="0" id="wait" name="wait" value = '<%= review.wait %>' required><br>
+
+    <label for="order">What did you order?</label><br>
+      <input type="text" id="order" name="order" value = '<%= review.order %>' required><br>
+
+    <label for="spent">How much money did you spend?</label><br>
+      <input type="number" min="0" id="spent" name="spent" value = '<%= review.spent %>' required><br>
+
+  <label for = "rating">Give us a rating</label><br>
+  <input type="number" min="0" max="10" id="rating" name="rating" value = '<%= review.rating %>' required><br><br><br>
+
+<input type = 'submit' name = 'submit'>
+</form>
+</div>
+<%- include ('./footer'); -%>
+</body>
+</html>

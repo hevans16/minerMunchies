@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang='en'>
+
+  <head>
+    <link href="./../assets/stylesheets/w3.css" rel='stylesheet'  type="text/css"/>
+    <link href="./../assets/stylesheets/bootstrap.min.css" rel='stylesheet'  type="text/css"/>
+    <link href='./../assets/stylesheets/capstone.css' rel='stylesheet'  type='text/css'/>
+    <!-- <script src="./../assets/scripts/confirmPassword.js"></script> !-->
+    <title>Register</title>
+  </head>
+
+  <body class = 'register'>
+    <%- include ('./navbar'); -%>
+      <main>
+          <div class = 'formWrapper'>
+            <h3>Register</h3>
+            <!-- This form allows the user to register-->
+              <form method='POST' action='/register'>
+                  <label for = 'email'>Email:</label>
+                  <input type = 'email' name = 'email' value = '<%= user.email %>' required><br><br>
+                  <label for = 'username'>Username:</label>
+                  <input type = 'text' name = 'username' value = '<%= user.username %>' required><br><br>
+                  <label for = 'fName'>First Name:</label>
+                  <input type = 'text' name = 'firstName' value = '<%= user.firstName %>' required><br><br>
+                  <label for = 'lName'>Last Name:</label>
+                  <input type = 'text' name = 'lastName' value = '<%= user.lastName %>' required><br><br>
+                  <label for = 'password'>Password:</label>
+                  <input type="password" name = "password" id="password" value = '<%= user.password %>' required><br><br>
+                  <label for = 'confirm_password'>Repeat Password:</label>
+                  <input type="password" id="confirm_password" required><br><br>
+                  <input type = 'submit' name = 'submit'>
+              </form>
+          </div>
+      </main>
+      <%- include ('./footer'); -%>
+  </body>
+</html>
